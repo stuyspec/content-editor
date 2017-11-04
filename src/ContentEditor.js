@@ -2,22 +2,24 @@ import React from "react";
 import { RichUtils } from "draft-js";
 import Editor, { composeDecorators } from "draft-js-plugins-editor";
 import createAlignmentPlugin from "draft-js-alignment-plugin";
+import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
 import createEntityPropsPlugin from "draft-js-entity-props-plugin";
 import createFocusPlugin from "draft-js-focus-plugin";
 import createLinkifyPlugin from "draft-js-linkify-plugin";
 import createImagePlugin from "draft-js-image-plugin";
-import AddImage from "./AddImage";
 import injectSheet from "react-jss";
 import ContentEditorToolbar from "./ContentEditorToolbar";
 
+const alignmentPlugin = createAlignmentPlugin();
+const blockDndPlugin = createBlockDndPlugin();
 const entityPlugin = createEntityPropsPlugin();
 const focusPlugin = createFocusPlugin();
-const alignmentPlugin = createAlignmentPlugin();
 const linkifyPlugin = createLinkifyPlugin();
 
 const decorator = composeDecorators(
   alignmentPlugin.decorator,
-  focusPlugin.decorator
+  blockDndPlugin.decorator,
+  focusPlugin.decorator,
 );
 
 const imagePlugin = createImagePlugin({ decorator });
@@ -26,6 +28,7 @@ const { AlignmentTool } = alignmentPlugin;
 
 const plugins = [
   alignmentPlugin,
+  blockDndPlugin,
   entityPlugin,
   focusPlugin,
   imagePlugin,
@@ -61,15 +64,12 @@ const ContentEditor = ({ classes, editorState, onChange }) => {
   return (
     <div className={classes.contentEditorWrapper}>
       <ContentEditorToolbar
+        addImage={imagePlugin.addImage}
         editorState={editorState}
         classes={classes}
         handleChange={onChange}
       />
-      <AddImage
-        editorState={editorState}
-        onChange={onChange}
-        modifier={imagePlugin.addImage}
-      />
+      <AlignmentTool />
       <div className={classes.contentEditor}>
         <Editor
           editorState={editorState}

@@ -46,6 +46,7 @@ class AddImage extends Component {
     onChange(this.props.modifier(editorState, this.state.url));
   };
 
+
   changeUrl = (evt) => {
     this.setState({url: evt.target.value});
   }
