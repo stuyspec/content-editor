@@ -1,7 +1,36 @@
 import React from "react";
-import { Editor, RichUtils } from "draft-js";
+import { RichUtils } from "draft-js";
+import Editor, { composeDecorators } from "draft-js-plugins-editor";
+import createAlignmentPlugin from "draft-js-alignment-plugin";
+import createEntityPropsPlugin from "draft-js-entity-props-plugin";
+import createFocusPlugin from "draft-js-focus-plugin";
+import createLinkifyPlugin from "draft-js-linkify-plugin";
+import createImagePlugin from "draft-js-image-plugin";
+import AddImage from "./AddImage";
 import injectSheet from "react-jss";
 import ContentEditorToolbar from "./ContentEditorToolbar";
+
+const entityPlugin = createEntityPropsPlugin();
+const focusPlugin = createFocusPlugin();
+const alignmentPlugin = createAlignmentPlugin();
+const linkifyPlugin = createLinkifyPlugin();
+
+const decorator = composeDecorators(
+  alignmentPlugin.decorator,
+  focusPlugin.decorator
+);
+
+const imagePlugin = createImagePlugin({ decorator });
+
+const { AlignmentTool } = alignmentPlugin;
+
+const plugins = [
+  alignmentPlugin,
+  entityPlugin,
+  focusPlugin,
+  imagePlugin,
+  linkifyPlugin
+];
 
 const styles = {
   contentEditorWrapper: {
@@ -36,10 +65,16 @@ const ContentEditor = ({ classes, editorState, onChange }) => {
         classes={classes}
         handleChange={onChange}
       />
+      <AddImage
+        editorState={editorState}
+        onChange={onChange}
+        modifier={imagePlugin.addImage}
+      />
       <div className={classes.contentEditor}>
         <Editor
           editorState={editorState}
           onChange={onChange}
+          plugins={plugins}
           handleKeyCommand={handleKeyCommand}
         />
       </div>
