@@ -21,11 +21,7 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "export-build": "babel src -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "build": "babel lib -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
