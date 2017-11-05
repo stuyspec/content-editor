@@ -1,3 +1,4 @@
 .babelrc
-src
+lib
+test
 CODE_OF_CONDUCT.md

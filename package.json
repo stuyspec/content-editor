@@ -21,7 +21,8 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "build": "babel lib -d build"
+    "build": "babel lib -d build",
+    "watch": "babel lib -w -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
