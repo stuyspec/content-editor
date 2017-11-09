@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { EditorState } from "draft-js";
-import ContentEditor from "./ContentEditor";
+import ContentEditor from "../lib/ContentEditor";
 
+const data = {
+  article_id: 1,
+  user_id: 1
+}
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +22,7 @@ class App extends Component {
     return (
       <div>
         <ContentEditor
+          uploadData={data}
           onChange={this.handleChange}
           editorState={this.state.editorState}
         />
