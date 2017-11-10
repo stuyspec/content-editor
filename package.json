@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.17.0",
     "babel-preset-stage-2": "^6.24.1",
     "draft-js": "^0.10.4",
-    "draft-js-alignment-plugin": "^2.0.0-rc8",
+    "draft-js-alignment-plugin": "^2.0.1",
     "draft-js-autolist-plugin": "^2.0.0",
     "draft-js-drag-n-drop-plugin": "^2.0.0-beta10",
     "draft-js-entity-props-plugin": "^2.0.0-beta1",
@@ -29,6 +28,7 @@
     "watch": "babel lib -w -d build"
   },
   "devDependencies": {
+    "axios": "^0.17.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
