@@ -4,9 +4,11 @@ import { EditorState } from "draft-js";
 import ContentEditor from "../lib/ContentEditor";
 
 const data = {
-  article_id: 1,
-  user_id: 1
+  article_id: 23,
+  user_id: 1,
+  title: "The Quick Brown Fox Jumps Over The Lazy Dog"
 };
+const ENDPOINT = "http://localhost:3000/media"
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class App extends Component {
   };
 
   fetchImages = () => {
-    axios.get("http://localhost:3000/media").then(response => {
+    axios.get(ENDPOINT).then(response => {
       this.setState({ images: response.data });
     });
   };
@@ -38,8 +40,10 @@ class App extends Component {
       <div>
         <ContentEditor
           uploadData={data}
+          endpoint={ENDPOINT}
           onChange={this.handleChange}
           images={this.state.images}
+          addImage={this.addImageToState}
           editorState={this.state.editorState}
         />
       </div>
