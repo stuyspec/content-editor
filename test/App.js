@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { EditorState } from "draft-js";
-import ContentEditor from "../lib/ContentEditor";
+import { ContentEditor } from "../build";
+
 
 const data = {
   article_id: 23,
