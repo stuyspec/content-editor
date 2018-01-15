@@ -1,6 +1,6 @@
 {
   "name": "spec-content-editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",
     "draft-js": "^0.10.4",
@@ -49,7 +49,7 @@
     "react-dom": "^16.0.0",
     "styled-components": "^2.2.3"
   },
-  "description": "👩‍🎨🎉 A custom rich text editor for The Spectator's CMS, compatible with redux-form. Written in React. Edit Add topics",
+  "description": "👩‍🎨🎉 A custom rich text editor for The Spectator's CMS. Written in React. Edit Add topics",
   "main": "build/index.js",
   "repository": {
     "type": "git",
